@@ -1,0 +1,6 @@
+name: 'WSIB Custome Developement'
+type: module
+description: 'WSIB Custome Developement for form.'
+core_version_requirement: ^8 || ^9 || ^10
+package: Custom
+version: 1.0

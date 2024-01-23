@@ -1,0 +1,179 @@
+<?php
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_create
+ */
+function wsib_custom_node_create(NodeInterface $node) {
+  switch ($node->getType()) {
+    case 'wsib':
+      $node->title = 'Date: ' . date('Y-m-d G:i:s');
+      break;
+  }
+}
+
+
+function wsib_custom_form_node_wsib_edit_form_alter(&$form, &$form_state, $form_id) {
+  //dump($form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_date_returned_to_work']['widget'][0]);
+
+  if (isset($form['title'])) {
+    // code...
+    $form['title']['#access'] = FALSE;
+  }
+  if (isset($form['field_return_to_work']['widget'][0]['subform']['field_wsib_offere_result']['widget']['#options']['_none'])) {
+    unset($form['field_return_to_work']['widget'][0]['subform']['field_wsib_offere_result']['widget']['#options']['_none']);
+  }
+
+  $form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_wsib_other_name']['#states'] = [
+    'visible' => [
+      ':input[name="field_lost_time_no_lost_time[0][subform][field_modified_work_confirmed_by]"]' => ['value' => 'other'],
+    ],
+  ];
+
+  $form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_wsib_other_telephone']['#states'] = [
+    'visible' => [
+      ':input[name="field_lost_time_no_lost_time[0][subform][field_modified_work_confirmed_by]"]' => ['value' => 'other'],
+    ],
+  ];
+
+  $form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_date_returned_to_work']['#states'] = [
+    'visible' => [
+      ':input[name="field_lost_time_no_lost_time[0][subform][field_wsib_return_to_work]"]' => ['value' => 'has_lost_time'],
+    ],
+  ];
+
+  $form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_date_worker_lost']['#states'] = [
+    'visible' => [
+      ':input[name="field_lost_time_no_lost_time[0][subform][field_wsib_return_to_work]"]' => ['value' => 'has_lost_time'],
+    ],
+  ];
+
+  $form['field_return_to_work']['widget'][0]['subform']['field_wsib_offere_result']['#states'] = [
+    'visible' => [
+      ':input[name="field_return_to_work[0][subform][field_wsib_modified_work_offer]"]' => ['value' => 'yes'],
+    ],
+  ];
+
+  $form['field_return_to_work']['widget'][0]['subform']['field_wsib_other_name']['#states'] = [
+    'visible' => [
+      ':input[name="field_return_to_work[0][subform][field_responsible_for_arranging]"]' => ['value' => 'other'],
+    ],
+  ];
+
+  $form['field_return_to_work']['widget'][0]['subform']['field_wsib_other_telephone']['#states'] = [
+    'visible' => [
+      ':input[name="field_return_to_work[0][subform][field_responsible_for_arranging]"]' => ['value' => 'other'],
+    ],
+  ];
+
+
+
+  // Target the actual input field for the 'required' state.
+  $form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_wsib_other_name']['widget'][0]['value']['#states'] = [
+    'required' => [
+      ':input[name="field_lost_time_no_lost_time[0][subform][field_modified_work_confirmed_by]"]' => ['value' => 'other'],
+    ],
+  ];
+
+  $form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_wsib_other_telephone']['widget'][0]['value']['#states'] = [
+    'required' => [
+      ':input[name="field_lost_time_no_lost_time[0][subform][field_modified_work_confirmed_by]"]' => ['value' => 'other'],
+    ],
+  ];
+
+  $form['field_return_to_work']['widget'][0]['subform']['field_wsib_other_name']['widget'][0]['value']['#states'] = [
+    'required' => [
+      ':input[name="field_return_to_work[0][subform][field_responsible_for_arranging]"]' => ['value' => 'other'],
+    ],
+  ];
+
+  $form['field_return_to_work']['widget'][0]['subform']['field_wsib_other_telephone']['widget'][0]['value']['#states'] = [
+    'required' => [
+      ':input[name="field_return_to_work[0][subform][field_responsible_for_arranging]"]' => ['value' => 'other'],
+    ],
+  ];
+}
+
+function wsib_custom_form_node_wsib_form_alter(&$form, &$form_state, $form_id) {
+  //dump($form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_date_returned_to_work']['widget'][0]);
+
+  if (isset($form['title'])) {
+    // code...
+    $form['title']['#access'] = FALSE;
+  }
+  if (isset($form['field_return_to_work']['widget'][0]['subform']['field_wsib_offere_result']['widget']['#options']['_none'])) {
+    unset($form['field_return_to_work']['widget'][0]['subform']['field_wsib_offere_result']['widget']['#options']['_none']);
+  }
+
+  $form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_wsib_other_name']['#states'] = [
+    'visible' => [
+      ':input[name="field_lost_time_no_lost_time[0][subform][field_modified_work_confirmed_by]"]' => ['value' => 'other'],
+    ],
+  ];
+
+  $form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_wsib_other_telephone']['#states'] = [
+    'visible' => [
+      ':input[name="field_lost_time_no_lost_time[0][subform][field_modified_work_confirmed_by]"]' => ['value' => 'other'],
+    ],
+  ];
+
+  $form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_date_returned_to_work']['#states'] = [
+    'visible' => [
+      ':input[name="field_lost_time_no_lost_time[0][subform][field_wsib_return_to_work]"]' => ['value' => 'has_lost_time'],
+    ],
+  ];
+
+  $form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_date_worker_lost']['#states'] = [
+    'visible' => [
+      ':input[name="field_lost_time_no_lost_time[0][subform][field_wsib_return_to_work]"]' => ['value' => 'has_lost_time'],
+    ],
+  ];
+
+  $form['field_return_to_work']['widget'][0]['subform']['field_wsib_offere_result']['#states'] = [
+    'visible' => [
+      ':input[name="field_return_to_work[0][subform][field_wsib_modified_work_offer]"]' => ['value' => 'yes'],
+    ],
+  ];
+
+  $form['field_return_to_work']['widget'][0]['subform']['field_wsib_other_name']['#states'] = [
+    'visible' => [
+      ':input[name="field_return_to_work[0][subform][field_responsible_for_arranging]"]' => ['value' => 'other'],
+    ],
+  ];
+
+  $form['field_return_to_work']['widget'][0]['subform']['field_wsib_other_telephone']['#states'] = [
+    'visible' => [
+      ':input[name="field_return_to_work[0][subform][field_responsible_for_arranging]"]' => ['value' => 'other'],
+    ],
+  ];
+
+
+
+  // Target the actual input field for the 'required' state.
+  $form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_wsib_other_name']['widget'][0]['value']['#states'] = [
+    'required' => [
+      ':input[name="field_lost_time_no_lost_time[0][subform][field_modified_work_confirmed_by]"]' => ['value' => 'other'],
+    ],
+  ];
+
+  $form['field_lost_time_no_lost_time']['widget'][0]['subform']['field_wsib_other_telephone']['widget'][0]['value']['#states'] = [
+    'required' => [
+      ':input[name="field_lost_time_no_lost_time[0][subform][field_modified_work_confirmed_by]"]' => ['value' => 'other'],
+    ],
+  ];
+
+  $form['field_return_to_work']['widget'][0]['subform']['field_wsib_other_name']['widget'][0]['value']['#states'] = [
+    'required' => [
+      ':input[name="field_return_to_work[0][subform][field_responsible_for_arranging]"]' => ['value' => 'other'],
+    ],
+  ];
+
+  $form['field_return_to_work']['widget'][0]['subform']['field_wsib_other_telephone']['widget'][0]['value']['#states'] = [
+    'required' => [
+      ':input[name="field_return_to_work[0][subform][field_responsible_for_arranging]"]' => ['value' => 'other'],
+    ],
+  ];
+}
+
+?>
