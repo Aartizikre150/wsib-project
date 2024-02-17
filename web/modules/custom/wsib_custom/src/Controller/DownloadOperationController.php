@@ -203,6 +203,18 @@ class DownloadOperationController extends ControllerBase {
       }
     }
 
+    // Loop through all pages and import them.
+    for ($pageNumber = 3; $pageNumber <= 4; $pageNumber++) {
+      // Add a new page in the destination PDF.
+      $pdf->AddPage();
+
+      // Import the current page of the existing PDF.
+      $templateId = $pdf->importPage($pageNumber);
+
+      // Use the imported page as a template.
+      $pdf->useTemplate($templateId);
+    }
+
     // Output the filled PDF to the browser.
     $pdf->Output('D', 'filled_form.pdf'); // 'D' means download
   }
