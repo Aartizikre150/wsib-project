@@ -1,6 +1,9 @@
 <?php
 
 use Drupal\node\NodeInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_ENTITY_TYPE_create
@@ -174,6 +177,27 @@ function wsib_custom_form_node_wsib_form_alter(&$form, &$form_state, $form_id) {
       ':input[name="field_return_to_work[0][subform][field_responsible_for_arranging]"]' => ['value' => 'other'],
     ],
   ];
+}
+
+/**
+ * Implements hook_entity_operation().
+ */
+function wsib_custom_entity_operation_alter(array &$operations, EntityInterface $entity) {
+    $entityTypeId = $entity->getEntityTypeId();
+    if ($entityTypeId !== 'node') {
+        return;
+    }
+    $nodeType = $entity->getType();
+    if ($nodeType === 'wsib') {
+      $nodeId = $entity->id();
+      // add custom operation
+      $editUrl = Url::fromRoute('wsib_custom.download_operation', ['node' => $nodeId]);
+      $operations['download'] = array(
+          'title' => t('Download'),
+          'weight' => 20,
+          'url' => $editUrl,
+      );
+    }
 }
 
 ?>

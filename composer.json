@@ -21,8 +21,14 @@
         "drupal/core-composer-scaffold": "^10.2",
         "drupal/core-project-message": "^10.2",
         "drupal/core-recommended": "^10.2",
+        "drupal/fillpdf": "5.1",
         "drupal/mobile_number": "^2.0",
-        "drupal/paragraphs": "^1.17"
+        "drupal/paragraphs": "^1.17",
+        "mpdf/mpdf": "^8.2",
+        "setasign/fpdf": "^1.8",
+        "setasign/fpdi": "^2.6",
+        "spatie/pdf-to-text": "^1.52",
+        "tecnickcom/tcpdf": "^6.6"
     },
     "conflict": {
         "drupal/drupal": "*"

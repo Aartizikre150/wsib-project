@@ -1,0 +1,6 @@
+wsib_custom.download_operation:
+  path: '/download-operation/{node}'
+  defaults:
+    _controller: '\Drupal\wsib_custom\Controller\DownloadOperationController::downloadOperation'
+  requirements:
+    _access: 'TRUE'
