@@ -101,13 +101,13 @@
 
 @media (min-width: 43.75rem) {
   .site-branding__logo img {
-    max-height: var(--sp4);
+    /*max-height: var(--sp4);*/
   }
 }
 
 @media (min-width: 75rem) {
   .site-branding__logo img {
-    max-height: calc(var(--header-height-wide-when-fixed) - var(--sp));
+    /*max-height: calc(var(--header-height-wide-when-fixed) - var(--sp));*/
   }
 }
 

@@ -190,13 +190,16 @@ function wsib_custom_entity_operation_alter(array &$operations, EntityInterface 
     $nodeType = $entity->getType();
     if ($nodeType === 'wsib') {
       $nodeId = $entity->id();
-      // add custom operation
-      $editUrl = Url::fromRoute('wsib_custom.download_operation', ['node' => $nodeId]);
-      $operations['download'] = array(
-          'title' => t('Download'),
-          'weight' => 20,
-          'url' => $editUrl,
-      );
+      // Check if user is authenticated
+      if (\Drupal::currentUser()->isAuthenticated()) {
+        // add custom operation
+        $editUrl = Url::fromRoute('wsib_custom.download_operation', ['node' => $nodeId]);
+        $operations['download'] = array(
+            'title' => t('Download'),
+            'weight' => 20,
+            'url' => $editUrl,
+        );
+      }
     }
 }
 

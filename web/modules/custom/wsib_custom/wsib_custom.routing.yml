@@ -3,4 +3,4 @@ wsib_custom.download_operation:
   defaults:
     _controller: '\Drupal\wsib_custom\Controller\DownloadOperationController::downloadOperation'
   requirements:
-    _access: 'TRUE'
+    _user_is_logged_in: 'TRUE'
