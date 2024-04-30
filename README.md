@@ -4,22 +4,28 @@
 
 This project aims to simplify the access and management of WSIB (Workplace Safety and Insurance Board) forms. It includes a user-friendly interface for easy form submission and a robust API for accessing and analyzing WSIB form data.
 
+Website URL : https://live-aartizikre.pantheonsite.io/
+
 ## Features
 
 - **User Interface**: An intuitive web interface to easily access and submit WSIB forms.
 - **API for Analysis**: A powerful API to retrieve WSIB form data for in-depth analysis.
 
 ### Home page
-<img width="788" alt="image" src="https://github.com/Aartizikre150/wsib-project/assets/103940296/21e50034-d1ff-4fa9-8b42-52ef6e340dce">
+![image](https://github.com/Aartizikre150/wsib-project/assets/103940296/708f8763-f031-40be-92bb-662dc5fccad9)
+
 
 ### WSIB form
-<img width="647" alt="image" src="https://github.com/Aartizikre150/wsib-project/assets/103940296/8d749228-638d-4f36-a4b8-6d3c7413d84b">
+![image](https://github.com/Aartizikre150/wsib-project/assets/103940296/0604e3a0-38d9-45cc-abef-92ff4b0b1a6b)
 
-### WSIB form list
-<img width="505" alt="image" src="https://github.com/Aartizikre150/wsib-project/assets/103940296/189b1064-ef8b-44ee-ae46-1aff3b0270d2">
+
+### WSIB form list with goverment of ontario WSIB formate
+<img width="923" alt="image" src="https://github.com/Aartizikre150/wsib-project/assets/103940296/0a2cac4f-4101-41b9-aaab-d595a4599b66">
+
 
 ### WSIB json api
-<img width="274" alt="image" src="https://github.com/Aartizikre150/wsib-project/assets/103940296/7db5a4a9-078e-44c8-b138-f844e5c9424d">
+![image](https://github.com/Aartizikre150/wsib-project/assets/103940296/61bf3c31-25dd-4b38-9d4a-33715815c504)
+
 
 
 
